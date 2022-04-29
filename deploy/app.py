@@ -83,7 +83,10 @@ def food_recommendation(Food_Name):
             # print(row['Name'])
             # Foodi = row['Food_ID']
             # i = food[food['Food_ID'] == Foodi].index
-            Recommendations.append({'Name':row['Name'],'Rating':row['Rating']})
+            if (not row['Name'] == Food_Name):
+                Recommendations.append({'Name':row['Name'],'Rating':row['Rating']})
+                if Recommendations.__len__() == 10:
+                    break
         df = pd.DataFrame(Recommendations)
         return df['Name']
     else:
